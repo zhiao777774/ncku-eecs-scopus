@@ -6,7 +6,7 @@ export function DataTabPanel(props) {
     const {data} = props;
 
     return (
-        <div className="pb-6 overflow-auto">
+        <div className="pb-28 overflow-auto">
             <div className="font-bold text-lg">{data.title}</div>
             <div className="mt-6 w-full">
                                          <span
