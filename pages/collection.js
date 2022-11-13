@@ -33,7 +33,7 @@ export default class Collection extends Component {
 }
 
 export async function getServerSideProps({req, res}) {
-    const cookies = cookie.parse(req.headers.cookie);
+    const cookies = cookie.parse((req && req.headers.cookie) || '');
 
     if (cookies.watchList) {
         const protocol = req.headers['x-forwarded-proto'] || 'http';
