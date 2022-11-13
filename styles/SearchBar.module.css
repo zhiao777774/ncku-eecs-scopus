@@ -1,0 +1,18 @@
+.search-btn {
+    color: #B92C2C;
+    transition: all 1s;
+    @apply p-2.5 w-11 h-11 absolute top-0 right-0 rounded-full text-center text-xl;
+}
+
+.search-bar {
+    @apply py-0 px-5 w-full h-11 absolute top-0 left-0;
+    @apply border-0  leading-8 hidden rounded-xl text-base;
+}
+
+.search-container {
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+    box-shadow: 0 0 15px #AE4B4B;
+    @apply p-1 relative top-1/2 left-1/2 w-12 h-12;
+    @apply box-border bg-white rounded-2xl border-4 border-solid border-white;
+}
