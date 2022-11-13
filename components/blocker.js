@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import {Component} from 'react';
+import styles from '@/styles/blocker.module.css';
 
 
 export default class Blocker extends Component {
@@ -11,25 +12,26 @@ export default class Blocker extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { display: this.props.display };
+        this.state = {display: this.props.display};
     }
 
     _disabled = (event) => {
-        this.setState({ display: false });
+        this.setState({display: false});
     };
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.display !== this.props.display) {
-            this.setState({ display: this.props.display });
+            this.setState({display: this.props.display});
         }
     }
 
     render() {
-        const { display } = this.state;
+        const {display} = this.state;
 
         return (
-            <div style={{ ...this.props.style }} className={'blocker ' + (display ? 'block' : 'hidden')}
-                onClick={this.props.clickable ? this._disabled : null}>
+            <div className={styles.blocker}
+                 style={{...this.props.style, ...{display: (display ? '  block' : ' hidden')}}}
+                 onClick={this.props.clickable ? this._disabled : null}>
                 {this.props.children}
             </div>
         );

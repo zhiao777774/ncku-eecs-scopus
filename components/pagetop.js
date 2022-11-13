@@ -9,7 +9,7 @@ export default class PageTopButton extends Component {
         this.state = { showPageTop: false };
     }
 
-    _jumpToPageTop(e) {
+    _scrollToPageTop(e) {
         e.preventDefault();
 
         const { target } = e;
@@ -34,7 +34,7 @@ export default class PageTopButton extends Component {
     render() {
         return (
             <a className={'scroll-to-top rounded hover:bg-gray-700 ' + (this.state.showPageTop ? 'block' : 'hidden')}
-                href="#page-top" onClick={this._jumpToPageTop} >
+                href="#page-top" onClick={this._scrollToPageTop} >
                 <FontAwesomeIcon icon={faAngleUp} size="lg" />
             </a>
         );

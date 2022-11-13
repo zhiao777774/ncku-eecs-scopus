@@ -1,18 +1,15 @@
-// jsconfig.json
 {
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
         "@/components/*": ["components/*"],
+        "@/styles/*": ["styles/*"],
         "@/pages/*": ["pages/*"],
         "@/layouts/*": ["components/layouts/*"],
         "@/api/*": ["api/*"],
-        "@/assets/*": ["assets/*"],
-        "@/data/*": ["assets/data/*"],
         "@/constants/*": ["constants/*"],
         "@/utils/*": ["utils/*"],
-        "@/database": ["api/database"],
-        "@/contracts/*": ["contracts/*"]
+        "@/data/*": ["data/*"]
       }
     }
   }

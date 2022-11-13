@@ -9,12 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.2.3",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "autoprefixer": "^10.4.5",
+    "cookies-next": "^2.1.1",
+    "iron-session": "^6.2.0",
+    "next": "^12.2.4-canary.9",
+    "next-connect": "^0.13.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "csv-loader": "^3.0.5",
     "eslint": "8.20.0",
-    "eslint-config-next": "12.2.3"
+    "eslint-config-next": "12.2.3",
+    "postcss": "^8.4.16",
+    "tailwindcss": "^2.2.19"
   }
 }
