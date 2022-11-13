@@ -208,11 +208,11 @@ class SearchTable extends Component {
 
         return (
             <div>
-                <table className="min-w-full border border-l-0 border-r-0 border-gray-300 bg-white relative">
+                <table className="min-w-full bg-white relative">
                     <thead>
-                    <tr className="text-xs border-b border-gray-100 tracking-wider text-black bg-gray-200">
-                        <th className="sticky top-18 z-40 p-3 pl-7 pr-6 text-left"></th>
-                        <th className="sticky top-18 z-40 p-3 text-left leading-4 cursor-pointer"
+                    <tr className="sticky top-0 z-40 text-xs border-b border-gray-100 tracking-wider text-black bg-gray-200">
+                        <th className="sticky top-0 z-40 p-3 pl-7 pr-6 text-left"></th>
+                        <th className="sticky top-0 z-40 p-3 text-left leading-4 cursor-pointer"
                             d-val="年份" onClick={this._sort}>
                             年份
                             {
@@ -223,7 +223,7 @@ class SearchTable extends Component {
                                     null
                             }
                         </th>
-                        <th className="sticky top-18 z-40 p-3 text-left leading-4 cursor-pointer"
+                        <th className="sticky top-0 z-40 p-3 text-left leading-4 cursor-pointer"
                             d-val="標題" onClick={this._sort}>
                             標題
                             {
@@ -234,7 +234,7 @@ class SearchTable extends Component {
                                     null
                             }
                         </th>
-                        <th className="sticky top-18 z-40 p-3 text-left leading-4 cursor-pointer"
+                        <th className="sticky top-0 z-40 p-3 text-left leading-4 cursor-pointer"
                             d-val="作者" onClick={this._sort}>
                             作者
                             {
@@ -245,7 +245,7 @@ class SearchTable extends Component {
                                     null
                             }
                         </th>
-                        <th className="sticky top-18 z-40 p-3 text-center leading-4 cursor-pointer"
+                        <th className="sticky top-0 z-40 p-3 text-center leading-4 cursor-pointer"
                             d-val="領域" onClick={this._sort}>
                             領域
                             {
@@ -256,7 +256,7 @@ class SearchTable extends Component {
                                     null
                             }
                         </th>
-                        <th className="sticky top-18 z-40 p-3 pr-9 text-right leading-4 cursor-pointer"
+                        <th className="sticky top-0 z-40 p-3 pr-9 text-right leading-4 cursor-pointer"
                             d-val="被引用次數" onClick={this._sort}>
                             被引用次數
                             {
