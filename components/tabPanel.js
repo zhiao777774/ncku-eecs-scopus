@@ -59,7 +59,7 @@ export function DataTabPanel(props) {
             </div>
             <div className="mt-4 text-blue-900 font-medium hover:text-blue-600">
                 <FontAwesomeIcon icon={faBookOpen} className="mr-2"/>
-                <a href={data.link} target="_blank">詳細資訊</a>
+                <a href={data.link} target="_blank" rel="noreferrer">詳細資訊</a>
             </div>
         </div>
     );
