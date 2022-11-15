@@ -10,8 +10,9 @@ export function DataTabPanel(props) {
         data.comm.split('\n').forEach((item) => {
             const [name, department, email] = item.split(';');
             comm.push({
-                name, department,
-                email: email.replace('電子郵件:', '').trim()
+                name,
+                department: department || '',
+                email: (email && email.replace('電子郵件:', '').trim()) || ''
             });
         });
     }
