@@ -22,21 +22,33 @@ class SearchMode {
             }
         });
     }
+
+    _preprocess(content, sep = undefined) {
+        if (Array.isArray(content)) {
+            if (sep !== undefined && sep !== null)
+                return content.map((item) => item.toLowerCase().split(sep)).flat();
+            return content.map((s) => s.toLowerCase().trim());
+        } else if (typeof content === 'string') {
+            if (sep !== undefined && sep !== null)
+                return content.split(sep).map((s) => s.toLowerCase().trim());
+            return content.toLowerCase();
+        }
+    }
 }
 
 class ExactMode extends SearchMode {
     process(rowData) {
         const field = this._field;
-        const keyword = this._kw.toLowerCase();
+        const keyword = this._kw.toLowerCase().trim();
 
         this._replaceKeys(rowData);
         const {'標題': ku, 作者: au, 索引關鍵字: kw, 摘要: ab, 來源出版物名稱: pb, 年份: year} = rowData;
 
-        let flag = (field.kw && kw && kw.split('; ').map((s) => s.toLowerCase().trim()).includes(keyword)) ||
+        let flag = (field.kw && kw && this._preprocess(kw, '; ').includes(keyword)) ||
             (field.ku && ku.includes(keyword)) ||
             (field.au && au && (
-                au.split(',').map((a) => a.toLowerCase().trim()).includes(keyword) || // 全名
-                au.split(',').map((a) => a.toLowerCase().trim().split(' ')).flat().includes(keyword) // 姓或名
+                this._preprocess(au, ',').includes(keyword) || // 全名
+                this._preprocess(this._preprocess(au, ','), ' ').includes(keyword) // 姓或名
             )) ||
             (field.ab && ab && ab.includes(keyword)) ||
             (field.pb && pb && pb.includes(keyword)) ||
