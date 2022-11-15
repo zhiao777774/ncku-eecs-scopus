@@ -46,7 +46,8 @@ export function DataTabPanel(props) {
                                     comm.map((item, i) => {
                                         return Object.values(item).map((s, j) => {
                                             return (
-                                                <tr key={`comm-tr-${i}-${j}`} className="border-b">
+                                                <tr key={`comm-tr-${i}-${j}`}
+                                                    className={(i !== comm.length - 1 && j === 2) ? 'border-b-2 border-gray-300' : 'border-b'}>
                                                     <th scope="row"
                                                         className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                                                         <FontAwesomeIcon
