@@ -40,19 +40,20 @@ class ExactMode extends SearchMode {
     process(rowData) {
         const field = this._field;
         const keyword = this._kw.toLowerCase().trim();
+        const pp = this._preprocess;
 
         this._replaceKeys(rowData);
         const {'標題': ku, 作者: au, 索引關鍵字: kw, 摘要: ab, 來源出版物名稱: pb, 年份: year} = rowData;
 
-        let flag = (field.kw && kw && this._preprocess(kw, '; ').includes(keyword)) ||
-            (field.ku && ku.includes(keyword)) ||
+        let flag = (field.kw && kw && pp(kw, '; ').includes(keyword)) || // 關鍵字
+            (field.ku && pp(ku).includes(keyword)) || // 標題
             (field.au && au && (
-                this._preprocess(au, ',').includes(keyword) || // 全名
-                this._preprocess(this._preprocess(au, ','), ' ').includes(keyword) // 姓或名
+                pp(au, ',').includes(keyword) || // 作者全名
+                pp(pp(au, ','), ' ').includes(keyword) // 作者姓或名
             )) ||
-            (field.ab && ab && ab.includes(keyword)) ||
-            (field.pb && pb && pb.includes(keyword)) ||
-            (field.year && year && (String(year) === String(keyword)));
+            (field.ab && ab && pp(ab).includes(keyword)) || // 摘要
+            (field.pb && pb && pp(pb).includes(keyword)) || // 出版刊物
+            (field.year && year && (String(year) === String(keyword))); // 年份
 
         if (!flag) return false;
 
