@@ -32,11 +32,12 @@ class ExactMode extends SearchMode {
         this._replaceKeys(rowData);
         const {'標題': ku, 作者: au, 索引關鍵字: kw, 摘要: ab, 來源出版物名稱: pb, 年份: year} = rowData;
 
-        console.log(keyword, au.split(',').map((a) => a.toLowerCase()), au.split(',').map((a) => a.toLowerCase()).includes(keyword))
-
         let flag = (field.kw && kw && kw.split('; ').map((s) => s.toLowerCase().trim()).includes(keyword)) ||
             (field.ku && ku.includes(keyword)) ||
-            (field.au && au && au.split(',').map((a) => a.toLowerCase().trim()).includes(keyword)) ||
+            (field.au && au && (
+                au.split(',').map((a) => a.toLowerCase().trim()).includes(keyword) || // 全名
+                au.split(',').map((a) => a.toLowerCase().trim().split(' ')).flat().includes(keyword) // 姓或名
+            )) ||
             (field.ab && ab && ab.includes(keyword)) ||
             (field.pb && pb && pb.includes(keyword)) ||
             (field.year && year && (String(year) === String(keyword)));
