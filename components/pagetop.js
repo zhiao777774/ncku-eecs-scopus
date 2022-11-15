@@ -26,7 +26,7 @@ export default class PageTopButton extends Component {
     componentDidMount() {
         document.addEventListener('scroll', () => {
             this.setState({
-                showPageTop: window.scrollY >= window.innerHeight / 3
+                showPageTop: window.scrollY >= window.innerHeight / 1.2
             });
         })
     }
