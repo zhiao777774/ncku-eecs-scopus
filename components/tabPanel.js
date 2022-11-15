@@ -5,14 +5,25 @@ import {faBookOpen, faEnvelope, faGraduationCap, faUserAlt} from "@fortawesome/f
 export function DataTabPanel(props) {
     const {data} = props;
 
+    const comm = [];
+    if (data.comm) {
+        data.comm.split('\n').forEach((item) => {
+            const [name, department, email] = item.split(';');
+            comm.push({
+                name, department,
+                email: email.replace('電子郵件:', '').trim()
+            });
+        });
+    }
+
     return (
         <div className="pb-28 overflow-auto">
             <div className="font-bold text-lg">{data.title}</div>
-            <div className="mt-6 w-full">
-                                         <span
-                                             className="text-sm inline-block p-1 px-3 mr-1 mb-2 rounded-full bg-green-100">{data.publication}</span>
+            <div className="mt-6 w-full text-sm text-justify">
                 <span
-                    className="text-sm inline-block p-1 px-3 mr-1 mb-2 rounded-full bg-green-100">{data.year}</span>
+                    className="inline-block p-1 px-3 mr-1 mb-2 rounded-full bg-green-100">{data.publication}</span>
+                <span
+                    className="inline-block p-1 px-3 mr-1 mb-2 rounded-full bg-green-100">{data.year}</span>
             </div>
             <div className="mt-2">
                 {
@@ -31,19 +42,21 @@ export function DataTabPanel(props) {
                             <table className="w-full text-sm text-left text-gray-800 mt-2">
                                 <tbody>
                                 {
-                                    data.comm.split(';').map((s, i) => {
-                                        return (
-                                            <tr key={`comm-tr-${i}`} className="border-b">
-                                                <th scope="row"
-                                                    className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                                                    <FontAwesomeIcon
-                                                        icon={[faUserAlt, faGraduationCap, faEnvelope][i]}
-                                                        className="mr-2"/>
-                                                    {['作者名稱', '所屬系所', '電子郵件'][i]}
-                                                </th>
-                                                <td className="py-4 px-6">{s.replace('電子郵件:', '')}</td>
-                                            </tr>
-                                        )
+                                    comm.map((item, i) => {
+                                        return Object.values(item).map((s, j) => {
+                                            return (
+                                                <tr key={`comm-tr-${i}-${j}`} className="border-b">
+                                                    <th scope="row"
+                                                        className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                                                        <FontAwesomeIcon
+                                                            icon={[faUserAlt, faGraduationCap, faEnvelope][j]}
+                                                            className="mr-2"/>
+                                                        {['作者名稱', '所屬系所', '電子郵件'][j]}
+                                                    </th>
+                                                    <td className="py-4 px-6">{s}</td>
+                                                </tr>
+                                            );
+                                        });
                                     })
                                 }
                                 </tbody>
