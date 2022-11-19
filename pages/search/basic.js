@@ -1,7 +1,8 @@
 import {Component} from 'react';
 import Layout from '@/components/layout';
-import {baseFormCMPT, databaseMap, QuerykeyMapping} from '@/constants/formComponents';
 import SearchTable from '@/components/table';
+import Tooltip from '@/components/tooltip';
+import {baseFormCMPT, databaseMap, QuerykeyMapping} from '@/constants/formComponents';
 
 export default class BasicSearcher extends Component {
     constructor(props) {
@@ -120,6 +121,10 @@ export default class BasicSearcher extends Component {
                                         <label className="block text-gray-700 text-sm font-bold mb-2"
                                                htmlFor={componentName}>
                                             {fieldName}
+                                            {
+                                                componentName === 'searchField' ?
+                                                    <Tooltip type="sf" /> : null
+                                            }
                                         </label>
                                         {
                                             elements.map(({elementTitle, elementName}, i) =>

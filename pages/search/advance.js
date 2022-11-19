@@ -6,6 +6,7 @@ import {
 } from '@/constants/formComponents';
 import SearchTable from '@/components/table';
 import Dropdown from '@/components/dropdown';
+import Tooltip from '@/components/tooltip';
 
 export default class AdvanceSearcher extends Component {
     constructor(props) {
@@ -144,6 +145,9 @@ export default class AdvanceSearcher extends Component {
                                     <label className="block text-gray-700 text-sm font-bold mb-2"
                                            htmlFor={componentName}>
                                         {fieldName}
+                                        {
+                                            !i ? <Tooltip type="sf" /> : null
+                                        }
                                     </label>
                                     <div className="flex gap-3 w-full">
                                         {
